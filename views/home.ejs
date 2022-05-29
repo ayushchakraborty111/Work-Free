@@ -1,0 +1,57 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            
+            <%- include("./partials/navbar") %>
+            
+            <section id="feed-posts">
+                <h4>
+                    Posts
+                </h4>
+                <form action="/post" id="new-post-form" method="POST">
+                    <textarea name="content" cols="30" rows="3" placeholder="Type Here"></textarea>
+                    <input type="submit" value="Post">
+                </form>
+                
+                <div>
+                    <ul>
+                        <% for(let post of posts){%>
+                            
+                            <li>
+                                <p>
+                                <%=post.content%>
+                                <br>
+                            <small>
+                                <%=post.postedBy.firstName%>
+                            </small>
+                           
+                            
+                        </p>
+                        <div class="post-comments">
+                            <form action="/comments" method="POST">
+                              <input type="text" name="content" placeholder="Type here to add comment..">
+                             
+                              <input type="submit" value="Add Comment">
+                              
+                            </form>
+                          
+                        </div>
+                        </li>
+
+
+
+                            <%}%>
+                    </ul>
+                </div>
+                
+                
+               
+              
+
+            </section>
+
+<%- include("partials/footer") %>
