@@ -5,10 +5,6 @@ const isLoggedIn = (req, res, next) => {
     next();
 }
 
-
 module.exports = {
     isLoggedIn
 }
-
-
-// <input type="hidden" name="post" value="<%=post._id%>" >

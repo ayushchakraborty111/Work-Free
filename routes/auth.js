@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
     try {
         const user = {
             firstName: req.body.firstname,
+            lastName: req.body.lastname,
             email: req.body.email,
             username:req.body.username
         }
@@ -38,7 +39,7 @@ router.post('/login', passport.authenticate('local',
         failureFlash:true
     }), async (req, res) => {
     
-    res.redirect('/post');
+    res.redirect('/');
 })
 
 router.get('/logout', (req, res) => {

@@ -3,55 +3,41 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid mx-5 col-md-12">
         <div class="row">
             
             <%- include("./partials/navbar") %>
             
-            <section id="feed-posts">
-                <h4>
-                    Posts
-                </h4>
-                <form action="/post" id="new-post-form" method="POST">
-                    <textarea name="content" cols="30" rows="3" placeholder="Type Here"></textarea>
-                    <input type="submit" value="Post">
-                </form>
+            <div class="main-content-container col-10 col-md-8 col-lg-6">
+                <h1 class="fw-bold titleContainer">Home</h1>
+                <!-- --------- -->
                 
+                <%- include("./partials/modal") %>
+                <!-- ----- -->
+
+                <div class="mb-3 postContainer">
+                    <div class="userImageContainer">
+                        <img src="/images/profilePic.jpeg" alt="User Profile">
+                    </div>
+                    
+                    <div class="textareaContainer">
+                        
+                            <textarea id="post-text" name="" id="" cols="30" rows="3" placeholder="What's happening?"></textarea>
+                            <button id="submitPostButton" type="submit">Post</button>
+                      
+                    </div>
+
+                   
+                </div>
                 <div>
-                    <ul>
-                        <% for(let post of posts){%>
-                            
-                            <li>
-                                <p>
-                                <%=post.content%>
-                                <br>
-                            <small>
-                                <%=post.postedBy.firstName%>
-                            </small>
-                           
-                            
-                        </p>
-                        <div class="post-comments">
-                            <form action="/comments" method="POST">
-                              <input type="text" name="content" placeholder="Type here to add comment..">
-                             
-                              <input type="submit" value="Add Comment">
-                              
-                            </form>
-                          
-                        </div>
-                        </li>
-
-
-
-                            <%}%>
-                    </ul>
+                    <div class="postsContainer"></div>
                 </div>
                 
-                
-               
-              
+            </div>
+        </div>
+    </div>
 
-            </section>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/jQuery.js"></script>
+<script src="/js/common.js"></script>
 <%- include("partials/footer") %>

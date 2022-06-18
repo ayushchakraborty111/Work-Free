@@ -1,0 +1,41 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            
+            <%- include("./partials/navbar") %>
+            
+           
+            <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+            
+            <%if(currentUser){%>
+                <!--if user matches then show the form-->
+                <form action="/user/profile/<%=user._id%>?_method=PATCH" enctype="multipart/form-data" method="POST">
+
+                    <input type="text" name="firstname" placeholder="First-Name" value="<%=user.firstName%>" required>
+                    <input type="text" name="lastname" placeholder="Last-Name" value="<%=user.lastName%>" required>
+                    <input type="email" name="name" placeholder="Email" value="<%=user.email%>" required>
+                    <input type="file" name="avatar" placeholder="profile picture">
+                    <button type="submit" class="btn btn-success btn-small">Submit</button>
+
+                </form>
+            <%}else{%>
+
+
+          
+ 
+
+                <%=user.firstName%>
+                <%= user.lastName %>
+                <%= user.email %>  
+
+                <!--else show only the profile info-->
+                <%}%>
+
+                
+
+
+<%- include("partials/footer") %>

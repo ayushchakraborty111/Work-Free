@@ -11,23 +11,54 @@ const { isLoggedIn } = require('../middleware');
 
 router.get('/comment', async(req, res) => {
     
-    const comment = await Comment.find({});
-   //  console.log(posts);
-     res.render('home',{comment});
+    const comments = await Comment.find({});
+    console.log(comments);
+    res.render('home',{comments});
 });
 
 
+router.post('/post/comment',isLoggedIn,async(req,res)=>{
+    Post.findById(req.body.post,async function(err,post){
+        if(post){
+            Comment.create({
+                content: req.body.content,
+                post:req.body.post,
+               // user:req.user._id
+            },function(err,comment){
+                //handle err
+                post.comments.push(comment);
+                post.save();
 
-    router.post('/comments',isLoggedIn, async (req, res) => {
-    
-        const newComment = {
-            ...req.body
+                res.redirect('/post');
+            });
         }
-    
-        await Comment.create(newComment);
-        
-        res.redirect('/post');
+    });
 });
+
+//   router.post('/post/comment',isLoggedIn, async(req, res) => {
+        
+          
+//             try{
+    
+//             const newComment = {
+//                 ...req.body
+//             }
+    
+           
+    
+            
+//              await Comment.create.save(newComment);
+    
+           
+    
+            
+//         res.redirect('/post');
+//             }
+//             catch(e)
+//             {
+//                 res.redirect('/error');
+//             }
+// });
 module.exports = router;
 
     
