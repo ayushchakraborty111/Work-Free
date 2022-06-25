@@ -123,6 +123,8 @@ function createPostHtml(postData) {
                                     <span>${postData.likes.length}</span>
                                 </button>
                             </div>
+                            
+
                         </div>
                     </div>
                 </div>
