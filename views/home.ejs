@@ -1,4 +1,7 @@
-<%- include("partials/header") %>
+<%- include("./partials/header") %>
+                
+<%- include("./partials/flash") %>               
+
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -8,8 +11,10 @@
             
             <%- include("./partials/navbar") %>
             
+            
             <div class="main-content-container col-10 col-md-8 col-lg-6">
                 <h1 class="fw-bold titleContainer">Home</h1>
+                
                 <!-- --------- -->
                 
                 <%- include("./partials/modal") %>
@@ -31,6 +36,7 @@
                 </div>
                 <div>
                     <div class="postsContainer"></div>
+
                 </div>
                 
             </div>
